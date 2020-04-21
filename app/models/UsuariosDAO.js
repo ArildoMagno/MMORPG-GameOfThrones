@@ -23,3 +23,5 @@ const Usuario = new Schema({
 
 mongoose.model("usuarios", Usuario) //nome do model, estrutura do model
 
+
+
