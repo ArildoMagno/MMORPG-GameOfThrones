@@ -30,28 +30,42 @@
 		</nav>
 
 	    <div class="container">
-	    		
-			<form class="form-cadastro">
+
+			
+			<% if(validacao.length>0){ %>
+				<div class="alert alert-danger">
+					<strong>Atenção!</strong>
+					<ul>
+						<% for(var i=0;i<validacao.length;i++){ %>
+							
+							<li><%=validacao[i].msg%></li>
+							<% } %>
+					</ul>
+				</div>
+
+			<% } %>
+
+			<form class="form-cadastro" action="/cadastrar" method="POST">
 			
 				<div class="row">
 					<div class="col-xs-4">
 						<div class="form-group">
 							<label for="nome" class="col-sm-2 col-form-label">Nome</label>
-							<input type="nome" class="form-control" id="nome" placeholder="Nome">
+							<input type="nome" value="<%=dadosForm.nome%>" class="form-control" id="nome" name="nome" placeholder="Nome">
 						</div>
 					</div>
 					
 					<div class="col-xs-4">
 						<div class="form-group">
 							<label for="usuario" class="col-sm-2 col-form-label">Usuário</label>
-							<input type="usuario" class="form-control" id="usuario" placeholder="Usuário">
+							<input type="usuario" value="<%=dadosForm.usuario%>" class="form-control" id="usuario" name="usuario" placeholder="Usuário">
 						</div>
 					</div>
 					
 					<div class="col-xs-4">
 						<div class="form-group">
 							<label for="senha" class="col-sm-2 col-form-label">Senha</label>
-							<input type="password" class="form-control" id="senha" placeholder="Password">
+							<input type="password" value="<%=dadosForm.senha%>" class="form-control" id="senha" name="senha" placeholder="Password">
 						</div>
 					</div>
 				</div>
