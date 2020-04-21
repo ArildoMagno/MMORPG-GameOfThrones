@@ -1,3 +1,7 @@
+const mongoose = require('mongoose')
+require("../models/UsuariosDAO")
+const Usuario = mongoose.model("usuarios")
+
 module.exports.cadastro = function (application, req, res) {
     res.render('cadastro', { validacao: {}, dadosForm: {} });
 }
@@ -19,7 +23,22 @@ module.exports.cadastrar = function (application, req, res) {
 
         res.render('cadastro', { validacao: erros, dadosForm: dadosForm });
         return;
+    } else {
+        const novoUsuario = new Usuario(
+            {
+                usuario: dadosForm.usuario,
+                nome: dadosForm.nome,
+                senha: dadosForm.senha,
+                casa: dadosForm.casa
+            }
+        );
+
+
+        novoUsuario.save().then(() => { console.log('Salvo') }).catch((err) => {
+            console.log('erro : ' + err)
+        })
     }
+
 
     res.send('podemos cadastrar');
 }
