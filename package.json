@@ -9,11 +9,13 @@
   "author": "Jorge",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.19.0",
     "consign": "^0.1.2",
+    "debug": "^4.1.1",
     "ejs": "^2.5.2",
     "express": "^4.17.1",
     "express-validator": "^2.20.8",
+    "lodash.update": "^4.10.2",
     "mongodb": "^3.5.6",
     "mongoose": "^5.9.10"
   }
