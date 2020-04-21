@@ -25,6 +25,7 @@ module.exports.autenticar = function (application, req, res) {
         if (usuario != undefined) {
             req.session.autorizado = true;
             req.session.usuario = usuario.usuario;
+            req.session.casa = usuario.casa;
         }
 
         if (req.session.autorizado) {

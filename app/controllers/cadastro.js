@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 require("../models/UsuariosDAO")
 const Usuario = mongoose.model("usuarios")
+var jogo = require("./jogo")
+
+
 
 module.exports.cadastro = function (application, req, res) {
     res.render('cadastro', { validacao: {}, dadosForm: {} });
@@ -34,7 +37,12 @@ module.exports.cadastrar = function (application, req, res) {
         );
 
 
-        novoUsuario.save().then(() => { console.log('Salvo') }).catch((err) => {
+        novoUsuario.save().then(() => {
+            console.log('Salvo usuario');
+            jogo.cadastrar(application, req, res);
+
+
+        }).catch((err) => {
             console.log('erro : ' + err)
         })
     }
