@@ -21,7 +21,7 @@ module.exports.autenticar = function (application, req, res) {
     }
 
     Usuario.findOne({ usuario: dadosForm.usuario, senha: dadosForm.senha }).lean().then((usuario) => {
-        console.log('\t conteudo:' + JSON.stringify(usuario) + '\t tipo: ' + typeof (usuario))
+    
         if (usuario != undefined) {
             req.session.autorizado = true;
             req.session.usuario = usuario.usuario;

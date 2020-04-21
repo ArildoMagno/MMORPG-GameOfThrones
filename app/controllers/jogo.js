@@ -3,21 +3,55 @@ require("../models/JogoDAO")
 const Jogo = mongoose.model("jogo")
 
 
+
+
+
+
+
+
+
 module.exports.jogo = function (application, req, res) {
 
-    if (req.session.autorizado) {
-        res.render('jogo', { img_casa: req.session.casa });
-    }
-    else {
+    if (req.session.autorizado !== true) {
         res.send('Usuario precisa fazer login')
+        return;
     }
+
+
+
+
+    this.iniciaJogo(res, req.session.usuario, req.session.casa);
+
+
+
 
 }
 
 
 
 
-module.exports.cadastrar = function (application, req, res) {
+
+module.exports.iniciaJogo = function (res, usuario, casa) {
+
+
+
+
+    Jogo.findOne({ usuario: usuario }).lean().then((jogo) => {
+
+        res.render('jogo', { img_casa: casa, jogo: jogo });
+
+
+
+    })
+
+
+}
+
+
+
+
+
+module.exports.gerarParametros = function (application, req, res) {
 
     var dadosForm = req.body;
 
@@ -38,7 +72,7 @@ module.exports.cadastrar = function (application, req, res) {
 
 
     novoJogo.save().then(() => {
-        console.log('Salvo jogo');
+
 
     }).catch((err) => {
         console.log('erro : ' + err)
@@ -51,11 +85,32 @@ module.exports.cadastrar = function (application, req, res) {
 
 
 
+//ROTAS
+
+
 module.exports.sair = function (application, req, res) {
 
     req.session.destroy((err) => {
         res.render("index", { validacao: {} });
     });
+
+
+}
+
+
+
+module.exports.suditos = function (application, req, res) {
+    res.render("aldeoes", { validacao: {} });
+
+
+}
+
+
+
+
+
+module.exports.pergaminhos = function (application, req, res) {
+    res.render("pergaminhos", { validacao: {} });
 
 
 }

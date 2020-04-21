@@ -38,8 +38,8 @@ module.exports.cadastrar = function (application, req, res) {
 
 
         novoUsuario.save().then(() => {
-            console.log('Salvo usuario');
-            jogo.cadastrar(application, req, res);
+          
+            jogo.gerarParametros(application, req, res);
 
 
         }).catch((err) => {
