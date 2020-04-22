@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "connect-memcached": "^1.0.0",
     "consign": "^0.1.2",
     "debug": "^4.1.1",
     "ejs": "^2.7.4",
