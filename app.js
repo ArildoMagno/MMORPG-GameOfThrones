@@ -1,6 +1,6 @@
 /* importar as configurações do servidor */
 var app = require('./config/server');
-var express = require("express");
+require('express');
 
 // Using Node.js `require()`
 const mongoose = require('mongoose')
