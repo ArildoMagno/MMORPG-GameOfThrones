@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 require("../models/JogoDAO")
 const Jogo = mongoose.model("jogo")
 const Acao = mongoose.model("acao")
+require("../models/UsuariosDAO")
+const Usuario = mongoose.model("usuarios")
 
 
 
@@ -120,6 +122,7 @@ module.exports.acao = function (application, req, res) {
 
     var dadosForm = req.body;
     dadosForm.usuario = req.session.usuario;
+    var usuario = dadosForm.usuario;
     var acao = dadosForm.acao;
     var date = new Date();
     var tempo = null;
@@ -136,7 +139,7 @@ module.exports.acao = function (application, req, res) {
     //acao
     const novaAcao = new Acao(
         {
-            usuario: dadosForm.usuario,
+            usuario: usuario,
             acao: acao,
             quantidade: dadosForm.quantidade,
             acao_termina_em: date.getTime() + tempo
@@ -150,6 +153,37 @@ module.exports.acao = function (application, req, res) {
     }).catch((err) => {
         console.log('erro : ' + err)
     })
+
+    var moedas = null;
+    switch (parseInt(acao)) {
+        case 1: moedas = -2 * (novaAcao.quantidade); break;
+        case 2: moedas = -3 * (novaAcao.quantidade); break;
+        case 3: moedas = -1 * (novaAcao.quantidade); break;
+        case 4: moedas = -1 * (novaAcao.quantidade); break;
+    }
+
+
+
+    Jogo.findOne({ usuario: usuario }).lean().then((jogo) => {
+
+        var query = { 'usuario': usuario };
+        moedas =  parseInt(jogo.moeda) + (parseInt(moedas));
+        Jogo.findOneAndUpdate(query, { moeda: moedas }, function (err, doc) {
+
+        });
+
+    })
+
+
+
+
+    //  console.log('-->' + moedas)
+    //console.log('\n\n--->' + moedas + '-->antiga' + moedaAntiga);
+
+
+
+
+
 
 
 }
@@ -195,7 +229,7 @@ module.exports.getAcoes = function (application, req, res) {
     var momentoAtual = data.getTime();
 
     Acao.find({ usuario: usuario, acao_termina_em: { $gt: momentoAtual } }).lean().then((acao) => {
-    
+
         res.render("pergaminhos", { acoes: acao });
 
     })

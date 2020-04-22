@@ -48,7 +48,7 @@
 					method: 'get',
 					success: (data) => {
 						$('#acoes').html(data);
-
+						clearTimeout(timerId);
 						cronometro();
 					}
 
@@ -56,27 +56,28 @@
 			});
 		})
 
-
+		var timerId = null;
 		function cronometro() {
 
 			$('.tempoRestante').each(function () {
 				var segundos = $(this).html();
-				
+
 				var segundosAtuais = (Date.parse(segundos));//parseDate
-			
-				
+
+
 				segundosAtuais = segundosAtuais - 1;
-				
-		
-				var novaHora = new Date(segundosAtuais)
-	
-				
-			
-			
-				$(this).html(novaHora);
+
+				if (segundosAtuais < 0) {
+					window.location.href = "/jogo?msg=C"
+				} else {
+					var novaHora = new Date(segundosAtuais)
+					$(this).html(novaHora);
+				}
+
+
 
 			});
-			setTimeout('cronometro()', 1000);
+			timerId = setTimeout('cronometro()', 1000);
 
 		}
 
@@ -108,6 +109,13 @@
 			<strong>Ação realizada com sucesso!</strong>
 		</div>
 		<% } %>
+
+
+		<% if(msg == 'C'){%>
+			<div class="alert alert-info" id="msg">
+				<strong>Senhor, a atividade ordenada foi finalizada!</strong>
+			</div>
+			<% } %>
 
 
 		<div class="row">
