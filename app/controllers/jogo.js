@@ -15,7 +15,6 @@ module.exports.jogo = function (application, req, res) {
         return;
     }
 
-
     var msg = '';
 
     if (req.query.msg != '') {
@@ -126,11 +125,11 @@ module.exports.acao = function (application, req, res) {
     var tempo = null;
 
 
-    switch (acao) {
-        case 1: tempo = 1 * 60 * 60000;
-        case 2: tempo = 2 * 60 * 60000;
-        case 3: tempo = 5 * 60 * 60000;
-        case 4: tempo = 5 * 60 * 60000;
+    switch (parseInt(acao)) {
+        case 1: tempo = 1 * 60 * 60000; break;
+        case 2: tempo = 2 * 60 * 60000; break;
+        case 3: tempo = 5 * 60 * 60000; break;
+        case 4: tempo = 5 * 60 * 60000; break;
     }
 
 
@@ -189,6 +188,22 @@ module.exports.suditos = function (application, req, res) {
 }
 
 
+module.exports.getAcoes = function (application, req, res) {
+
+    var usuario = req.session.usuario;
+    var data = new Date();
+    var momentoAtual = data.getTime();
+
+    Acao.find({ usuario: usuario, acao_termina_em: { $gt: momentoAtual } }).lean().then((acao) => {
+    
+        res.render("pergaminhos", { acoes: acao });
+
+    })
+
+
+}
+
+
 
 
 module.exports.pergaminhos = function (application, req, res) {
@@ -196,5 +211,12 @@ module.exports.pergaminhos = function (application, req, res) {
         res.send('Usuario precisa fazer login')
         return;
     }
-    res.render("pergaminhos", { validacao: {} });
+
+
+    /* recuperar as acoes inseridas no banco de dados */
+
+
+    this.getAcoes(application, req, res);
+
+
 }

@@ -17,6 +17,7 @@
 	<link href="css/style.css" rel="stylesheet">
 
 	<script>
+
 		$(document).ready(() => {
 			$('#btn_sair').click(function () {
 				window.location.href = '/sair';
@@ -47,11 +48,38 @@
 					method: 'get',
 					success: (data) => {
 						$('#acoes').html(data);
+
+						cronometro();
 					}
 
 				});
 			});
 		})
+
+
+		function cronometro() {
+
+			$('.tempoRestante').each(function () {
+				var segundos = $(this).html();
+				
+				var segundosAtuais = (Date.parse(segundos));//parseDate
+			
+				
+				segundosAtuais = segundosAtuais - 1;
+				
+		
+				var novaHora = new Date(segundosAtuais)
+	
+				
+			
+			
+				$(this).html(novaHora);
+
+			});
+			setTimeout('cronometro()', 1000);
+
+		}
+
 	</script>
 
 </head>
@@ -71,14 +99,14 @@
 		<% if(msg == 'A'){%>
 		<div class="alert alert-danger" id="msg">
 			<strong>Operação Inválida! Verifique se todos os bancos foram informados</strong>
-		</div> 
+		</div>
 		<% } %>
 
 
 		<% if(msg == 'B'){%>
-			<div class="alert alert-info" id="msg">
-				<strong>Ação realizada com sucesso!</strong>
-			</div> 
+		<div class="alert alert-info" id="msg">
+			<strong>Ação realizada com sucesso!</strong>
+		</div>
 		<% } %>
 
 

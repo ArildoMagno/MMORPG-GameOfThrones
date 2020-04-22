@@ -1,10 +1,33 @@
-<div id="pergaminhos">					
+<div id="pergaminhos">
 	<h3>Pergaminhos</h3>
-	
+
 	<ul>
-		<li>1 enforcamento(s) programado - <small>restam 00000 segundos - <a href="#">revogar ordem</a></small></li>
-		<li>2 aldeão(ões) em treinamento de magia - <small>restam 00000 segundos - <a href="#">revogar ordem</a></small></li>
-		<li>1 aldeão(ões) em treinamento de história - <small>restam 00000 segundos - <a href="#">revogar ordem</a></small></li>
-		<li>5 aldeão(ões) coletando recursos - <small>restam 00000 segundos - <a href="#">revogar ordem</a></small></li>
+
+
+		<% for(var i=0;i<acoes.length;i++){ %>
+		<% 
+			var txtAcao= '';
+
+			switch(parseInt(acoes[i].acao)){
+				case 1: txtAcao = 'aldeão(ões) coletando recursos'; break;
+				case 2: txtAcao = 'enforcamento(s) programado'; break;
+				case 3: txtAcao = 'aldeão(ões) em treinamento de história'; break;
+				case 4: txtAcao = 'aldeão(ões) em treinamento de magia'; break;
+
+			}
+			%>
+			<br />
+		<li>
+			<strong> <%=acoes[i].quantidade%> <%=txtAcao%> </strong>
+			
+			<small>
+				<br />	. Termina em:&nbsp; &nbsp;	<span class="tempoRestante"><%=(acoes[i].acao_termina_em)%> </span> <br /> <a href="#">Revogar ordem</a> 
+			</small>
+
+		</li>
+		
+		<% } %>
+
+
 	</ul>
 </div>
