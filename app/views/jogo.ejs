@@ -24,25 +24,28 @@
 
 
 			$('#btn_suditos').click(() => {
+				$('#msg').hide();
+
 				$.ajax({
 					url: '/suditos',
 					method: 'get',
-					success: (data)=>{
+					success: (data) => {
 						$('#acoes').html(data);
 					}
 
 				});
-			
+
 			});
 
 
 
 
 			$('#btn_pergaminhos').click(() => {
+				$('#msg').hide();
 				$.ajax({
 					url: '/pergaminhos',
 					method: 'get',
-					success: (data)=>{
+					success: (data) => {
 						$('#acoes').html(data);
 					}
 
@@ -64,6 +67,20 @@
 	</nav>
 
 	<div class="container">
+
+		<% if(msg == 'A'){%>
+		<div class="alert alert-danger" id="msg">
+			<strong>Operação Inválida! Verifique se todos os bancos foram informados</strong>
+		</div> 
+		<% } %>
+
+
+		<% if(msg == 'B'){%>
+			<div class="alert alert-info" id="msg">
+				<strong>Ação realizada com sucesso!</strong>
+			</div> 
+		<% } %>
+
 
 		<div class="row">
 			<div class="col-sm-3 casa">
@@ -123,7 +140,7 @@
 
 				<div class="col-sm-2">
 					<img src="images/outros/moeda.jpg" title="Moeda" alt="Moeda" />
-					<span>25</span>
+					<span><%=jogo.moeda%></span>
 				</div>
 
 			</div>

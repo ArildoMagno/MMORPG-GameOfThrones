@@ -8,7 +8,7 @@ const db = require("./config/dbConnection")
 
 
 //conecta ao banco
-mongoose.connect(db.mongoURI, { useNewUrlParser: true }).then(() => { console.log("Conectado ao mongo") }).catch((err) => { console.log("ERRROOO AO CONECTAR : " + err) })
+mongoose.connect(db.mongoURI, { useNewUrlParser: true }).then(() => { console.log("Conectado ao mongo\n\n") }).catch((err) => { console.log("ERRROOO AO CONECTAR : " + err) })
 
 
 
