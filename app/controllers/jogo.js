@@ -4,7 +4,7 @@ const Jogo = mongoose.model("jogo")
 const Acao = mongoose.model("acao")
 require("../models/UsuariosDAO")
 const Usuario = mongoose.model("usuarios")
-
+var ObjectID = require('mongodb').ObjectID;
 
 
 
@@ -167,7 +167,7 @@ module.exports.acao = function (application, req, res) {
     Jogo.findOne({ usuario: usuario }).lean().then((jogo) => {
 
         var query = { 'usuario': usuario };
-        moedas =  parseInt(jogo.moeda) + (parseInt(moedas));
+        moedas = parseInt(jogo.moeda) + (parseInt(moedas));
         Jogo.findOneAndUpdate(query, { moeda: moedas }, function (err, doc) {
 
         });
@@ -190,6 +190,23 @@ module.exports.acao = function (application, req, res) {
 
 
 
+module.exports.revogar_acao = function (application, req, res) {
+
+    var url_query = req.query;
+    var _id = url_query.id_acao;
+
+
+
+    var query = { '_id': ObjectID(_id) };
+
+    Acao.findOneAndDelete(query, {}, function (err, doc) {
+        res.redirect("jogo?msg=D");
+    }).catch((err) => {
+        console.log('err: ' + err);
+    });
+
+
+}
 
 
 

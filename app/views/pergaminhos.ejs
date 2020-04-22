@@ -21,7 +21,7 @@
 			<strong> <%=acoes[i].quantidade%> <%=txtAcao%> </strong>
 			
 			<small>
-				<br />	. Termina em:&nbsp; &nbsp;	<span class="tempoRestante"><%=(acoes[i].acao_termina_em)%> </span> <br /> <a href="#">Revogar ordem</a> 
+				<br />	. Termina em:&nbsp; &nbsp;	<span class="tempoRestante"><%=acoes[i].acao_termina_em%> </span> <br /> <a href="/revogar_acao?id_acao=<%=acoes[i]._id%>">Revogar ordem</a> 
 			</small>
 
 		</li>
