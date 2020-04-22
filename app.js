@@ -14,6 +14,7 @@ mongoose.connect(db.mongoURI, { useNewUrlParser: true }).then(() => { console.lo
 
 
 /* parametrizar a porta de escuta */
-app.listen(80, function(){
+const PORT = process.env.PORT || 80;
+app.listen(PORT, function () {
 	console.log('Servidor online');
 })

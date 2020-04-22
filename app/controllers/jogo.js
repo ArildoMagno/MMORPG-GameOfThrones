@@ -177,14 +177,6 @@ module.exports.acao = function (application, req, res) {
 
 
 
-    //  console.log('-->' + moedas)
-    //console.log('\n\n--->' + moedas + '-->antiga' + moedaAntiga);
-
-
-
-
-
-
 
 }
 
