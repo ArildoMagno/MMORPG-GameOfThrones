@@ -1,4 +1,3 @@
-require('../app/controllers')
 /* importar o módulo do framework express */
 var express = require('express');
 
@@ -36,6 +35,7 @@ app.use(expressSession({
 	resave: false,
 	saveUninitialized: false
 }));
+
 
 /* efetua o autoload das rotas, dos models e dos controllers para o objeto app */
 consign({})
