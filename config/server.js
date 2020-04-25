@@ -38,11 +38,11 @@ app.use(expressSession({
 
 
 /* efetua o autoload das rotas, dos models e dos controllers para o objeto app */
-consign({})
+consign()
 	.include('app/routes')
 	.then('config/dbConnection.js')
 	.then('app/models')
-	.then('controllers')
+	.then('app/controllers')
 	.into(app);
 
 /* exportar o objeto app */

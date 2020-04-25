@@ -1,5 +1,6 @@
 /* importar as configurações do servidor */
 var app = require('./config/server');
+require('./app/controllers')
 require('express');
 
 // Using Node.js `require()`
