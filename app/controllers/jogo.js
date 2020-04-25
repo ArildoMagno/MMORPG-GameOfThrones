@@ -67,7 +67,7 @@ module.exports.gerarParametros = function (application, req, res) {
             suditos: 10,
             temor: Math.floor((Math.random() * 1000)),
             sabedoria: Math.floor((Math.random() * 1000)),
-            moeda: Math.floor((Math.random() * 1000)),
+            moeda: Math.floor((Math.random() * 100)),
             suditos: Math.floor((Math.random() * 1000)),
             magia: Math.floor((Math.random() * 1000)),
             comercio: Math.floor((Math.random() * 1000))
@@ -161,6 +161,7 @@ module.exports.acao = function (application, req, res) {
         case 3: moedas = -1 * (novaAcao.quantidade); break;
         case 4: moedas = -1 * (novaAcao.quantidade); break;
     }
+ 
 
 
 
