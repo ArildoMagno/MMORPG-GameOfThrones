@@ -1,3 +1,15 @@
+//OBS: SE FOR RODAR EM LOCALHOST, TEM QUE ADICIONAR O .app EM TODAD AS ROTAS
+
+/*
+ex:
+em produção:
+application.controllers.cadastro.cadastrar(application, req, res);
+
+em localhost:
+application.app.controllers.cadastro.cadastrar(application, req, res);
+*/
+
+
 /* importar as configurações do servidor */
 var app = require('./config/server');
 require('./app/controllers')
