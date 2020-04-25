@@ -42,7 +42,7 @@ consign({})
 	.include('app/routes')
 	.then('config/dbConnection.js')
 	.then('app/models')
-	.then('app/controllers')
+	.then('controllers')
 	.into(app);
 
 /* exportar o objeto app */
