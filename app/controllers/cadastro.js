@@ -48,5 +48,5 @@ module.exports.cadastrar = function (application, req, res) {
     }
 
 
-    res.send('podemos cadastrar');
+    res.render('index');
 }
