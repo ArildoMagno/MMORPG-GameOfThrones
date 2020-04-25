@@ -22,6 +22,7 @@ module.exports.cadastrar = function (application, req, res) {
 
     const erros = req.validationErrors();
 
+
     if (erros) {
         res.render('cadastro', { validacao: erros, dadosForm: dadosForm });
         return;
@@ -44,7 +45,7 @@ module.exports.cadastrar = function (application, req, res) {
         }).catch((err) => {
             console.log('erro : ' + err)
         })
-        res.render('index')
+        res.send('PASSA AQUI')
     }
 
 
