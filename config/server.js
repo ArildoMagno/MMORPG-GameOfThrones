@@ -1,3 +1,4 @@
+require('../app/controllers')
 /* importar o módulo do framework express */
 var express = require('express');
 
