@@ -23,7 +23,6 @@ module.exports.cadastrar = function (application, req, res) {
     const erros = req.validationErrors();
 
     if (erros) {
-
         res.render('cadastro', { validacao: erros, dadosForm: dadosForm });
         return;
     } else {
@@ -38,15 +37,16 @@ module.exports.cadastrar = function (application, req, res) {
 
 
         novoUsuario.save().then(() => {
-          
+
             jogo.gerarParametros(application, req, res);
 
 
         }).catch((err) => {
             console.log('erro : ' + err)
         })
+        res.render('index')
     }
 
 
-    res.render('index');
+
 }
