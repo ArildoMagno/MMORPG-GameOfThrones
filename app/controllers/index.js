@@ -31,7 +31,7 @@ module.exports.autenticar = function (application, req, res) {
         if (req.session.autorizado) {
             res.redirect("jogo")
         } else {
-            res.render("index", { validacao: {} });
+            res.render('index', { validacao: {} });
         }
 
     })
