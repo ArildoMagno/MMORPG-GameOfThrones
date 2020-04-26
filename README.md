@@ -1,11 +1,11 @@
 ## MMORPG-GameOfThrones
 
-My Website with RPG of a Game of Thrones
+RPG de Browser basedo na série game of thrones
 
 
-![Project Photo - 1](https://github.com/ArildoMagno/MMORPG-GameOfThrones/blob/master/got.png)
+![Print - 1](https://github.com/ArildoMagno/MMORPG-GameOfThrones/blob/master/got.png)
 
 
-![Project Photo - 2](https://github.com/ArildoMagno/MMORPG-GameOfThrones/blob/master/got2.png)
+![Print - 2](https://github.com/ArildoMagno/MMORPG-GameOfThrones/blob/master/got2.png)
 
-[Click Here To Go To The Website](https://polar-island-93157.herokuapp.com/)
+[Clique aqui para acessar](https://polar-island-93157.herokuapp.com/)
